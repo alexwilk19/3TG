@@ -9,11 +9,8 @@ namespace FaeriesAndTheWizard
 {
     public class Room
     {
-        internal void PrintRoom()
-        {
-
-        }
-        Dictionary<int, object> Contents = new Dictionary<int, object>();
+   
+        public Dictionary<int, string> Contents = new Dictionary<int, string>();
         internal Room(int id)
         {
             

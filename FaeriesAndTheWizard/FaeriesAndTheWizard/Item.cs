@@ -32,6 +32,7 @@ namespace FaeriesAndTheWizard
 
     internal class InitialiseItems
     {
+        /*
         internal Item InitialiseItems(int pItemID, int pInvID)
         {
             int[] itemIntArray;
@@ -46,5 +47,6 @@ namespace FaeriesAndTheWizard
 
             return new Item(pInvID, itemIntArray, itemBoolArray, description);
         }
+        */
     }
 }
