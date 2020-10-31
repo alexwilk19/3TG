@@ -22,7 +22,8 @@ namespace FaeriesAndTheWizard
 
             Processor.ProcessText(TextStorage.FirstChoiceO12, 20);
             NewRoom:
-            Room TrainingRoom = new Room(1);
+            Random randy = new Random();
+            Room TrainingRoom = new Room(randy.Next(19000000));
             foreach (var item in TrainingRoom.Contents)
             {
                 Processor.ProcessText(item.Key + ". " +item.Value, 20);
