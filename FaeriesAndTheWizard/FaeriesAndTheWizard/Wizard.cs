@@ -22,7 +22,7 @@ namespace FaeriesAndTheWizard
         {
             _Score = 0;
             _Name = name;
-            _RoomsCleared = 0;
+            _RoomsCleared = 25;
             _Health = 200;
             _Potions = 0;
             _Artifacts = 0;

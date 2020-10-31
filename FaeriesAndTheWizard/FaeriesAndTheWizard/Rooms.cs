@@ -126,6 +126,15 @@ namespace FaeriesAndTheWizard
             Processor.PresentOptions(TextStorage.CauldronLevel);
         }
 
+        internal Room(char c)
+        {
+            Processor.ProcessText("Aha, the big one! Imagine how many spells you can cast if you chop off her wings and turn them into potions!\n" +
+                                  "But she will put up quite the fight, and you had better be prepared. She has a lot of health, but if you can\n" +
+                                  "pull this off, then those damned faeries will leave you alone!", 10);
+            Processor.PresentOptions(TextStorage.BossFloor);
+
+        }
+
     }
     internal class Rooms
     {

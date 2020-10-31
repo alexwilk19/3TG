@@ -40,7 +40,7 @@ namespace FaeriesAndTheWizard
             foreach (var item in options)
             {
                 i++;
-                ProcessText(item, 10);
+                ProcessText(item, 40);
             }      
         }
 

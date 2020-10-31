@@ -124,6 +124,134 @@ namespace FaeriesAndTheWizard
 
 
         }
+        private static void FinalCombat(ref Wizard player)
+        {
+            BossFae enemy = new BossFae();
+            Processor.ProcessText("Your remaining health = " + player._Health, 10);
+            Processor.ProcessText("Your remaining mana = " + player._Mana, 10);
+        RetakeAttackChoice:
+            Processor.ProcessText("Choose an ability to attack them:\n" +
+                "1. Staff Strike --- You deal between 10-20 damage, with no miss chance - Costs 0 Mana.\n" +
+                "2. Fireball --- You deal between 1-100 damage, with a 20% chance to instead damage yourself! - Costs 5 Mana\n" +
+                "3. Ice Shard --- You deal 30 damage, with a 20% chance to deal double damage, or miss - Costs 10 Mana\n", 10);
+
+            switch (Console.ReadLine())
+            {
+                case "1":
+                    enemy._Health -= player.StaffSmack();
+
+                    break;
+                case "2":
+                    if (player._Mana >= 5)
+                    {
+                        player._Mana -= 5;
+                        int tempdamage = player.Fireball();
+                        if (tempdamage == 0)
+                        {
+
+                        }
+                        else
+                        {
+                            enemy._Health -= tempdamage;
+
+                        }
+
+                    }
+                    else
+                    {
+                        Processor.ProcessText("Not enough mana! Your mana: " + player._Mana + ". Make another choice.", 10);
+                        goto RetakeAttackChoice;
+                    }
+
+
+                    break;
+                case "3":
+                    if (player._Mana >= 10)
+                    {
+                        player._Mana -= 10;
+                        int tdamage = player.IcicleSpear();
+                        if (tdamage == 0)
+                        {
+
+                        }
+                        else
+                        {
+                            enemy._Health -= tdamage;
+
+                        }
+
+                    }
+                    else
+                    {
+                        Processor.ProcessText("Not enough mana! Your mana: " + player._Mana + ". Make another choice.", 10);
+                        goto RetakeAttackChoice;
+                    }
+                    break;
+                default:
+                    Console.WriteLine("Take a proper choice!");
+                    goto RetakeAttackChoice;
+
+            }
+            Random r = new Random();
+            Processor.ProcessText("Their remaining health = " + enemy._Health, 10);
+            if (enemy._Health > 0)
+            {
+                int ability = r.Next(6);
+                switch (ability)
+                {
+                    case 0:
+                        player._Health -= enemy.Strike();
+                        break;
+                    case 1:
+                        player._Health -= enemy.Strike();
+                        break;
+                    case 2:
+                        player._Health -= enemy.Strike();
+                        break;
+                    case 3:
+                        enemy.Meditate();
+                        break;
+                    case 4:
+                        player._Health -= enemy.WildDust();                           
+                        break;
+                    case 5:
+                        player._Health -= enemy.WildCardHeal();
+                        break;
+                    case 6:
+                        player._Health -= enemy.AuroraAura();
+                        break;
+                    default:
+                        goto RetakeAttackChoice;
+                }
+                Processor.ProcessText("Your remaining health = " + player._Health, 10);
+                Processor.ProcessText("Your remaining mana = " + player._Mana, 10);
+
+
+
+                if (player._Health < 0)
+                {
+                    Processor.ProcessText("You have been slain! Restarting....", 10);
+                    Dead = true;
+
+
+                }
+                else
+                {
+                    goto RetakeAttackChoice;
+                }
+                Processor.ProcessText("Your remaining health = " + player._Health, 10);
+            }
+            else
+            {
+                player._FaeSlain++;
+                player._Score += 1000;
+                Processor.ProcessText("The fae have been defeated!", 20);
+                Processor.ProcessText($"Score: {player._Score}", 10);
+                Console.ReadKey();
+            }
+
+
+        }
         static void Main(string[] args)
         {
         EndOfGame2:
@@ -176,7 +304,10 @@ namespace FaeriesAndTheWizard
             //boss room 
             else if (player._RoomsCleared == 29)
             {
-
+                char c = '~';
+                Room finalRoom = new Room(c);
+                FinalCombat(ref player);
+                
             }
             //normal room
             else
@@ -215,6 +346,7 @@ namespace FaeriesAndTheWizard
                 if (choice == "r" || choice == "R")
                 {
                     player._RoomsCleared++;
+                    player._Mana+=5;
                     Processor.ProcessText("Heading to the next room. You gain +5 mana.",10);
                     Console.WriteLine("\n");
 
