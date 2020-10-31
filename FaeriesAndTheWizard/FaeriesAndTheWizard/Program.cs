@@ -13,6 +13,7 @@ namespace FaeriesAndTheWizard
         static int enemyNumberPerRoom;
         static int itemNumberPerRoom;
         static bool Dead = false;
+        static int TotalInventorySpace = 20;
         private static void Combat(ref Wizard player, int eHP, int eDMG)
         {
             Faerie enemy = new Faerie(eHP, eDMG);
@@ -135,8 +136,8 @@ namespace FaeriesAndTheWizard
 
 
             Processor.ProcessText("You have 30 floors ahead of you to clear.. they are filled with Items and Fae! You can get and fight everything in a room,\n" +
-                "or you can skip it entirely. Every 5 floors is a cauldron. With this,\n" +
-                "you can heal yourself, increase your standing with the gods(score increase), or place your inventory items.", 20);
+                                  "or you can skip it entirely. Every 5 floors has a cauldron. With this, you can heal yourself, increase your standing with\n" +
+                                  "the gods(+35 mana), or increase your inventory to enable you to pick up more items.", 20);
         NewRoom:
             Random randy = new Random();
 
@@ -150,7 +151,7 @@ namespace FaeriesAndTheWizard
                 Processor.ProcessText("A cauldron room! You have choices, yes, choices! You can either:\n" +
                     "1. Increase your health by 150\n" +
                     "2. Increase your mana by 35\n" +
-                    "3. Store Items\n", 10);
+                    "3. Increase inventory space by 10\n", 10);
                 WRONGCHOICE:
                 string input = Console.ReadLine();
                 switch (input)
@@ -162,7 +163,7 @@ namespace FaeriesAndTheWizard
                         player._Mana += 35;
                         break;
                     case "3":
-                        player._InventorySlots = 0;
+                        TotalInventorySpace += 10;
                         break;
                     default:
                         Console.WriteLine("Wrong choice again. Or for the first time. This tower is timeless.");
@@ -206,7 +207,7 @@ namespace FaeriesAndTheWizard
                 Processor.ProcessText($"Health: {player._Health}", 10);
                 Processor.ProcessText($"Mana: {player._Mana}", 10);
                 Processor.ProcessText($"Room Number: {player._RoomsCleared + 1}/30", 10);
-                Processor.ProcessText($"Inventory Space: {player._InventorySlots}/20", 10);
+                Processor.ProcessText($"Inventory Space: {player._InventorySlots}/{TotalInventorySpace}", 10);
                 Processor.ProcessText(newRoomText, 10);
             RetakeRoomChoice:
                 string choice = Console.ReadLine();
@@ -226,7 +227,7 @@ namespace FaeriesAndTheWizard
 
                         Random rand = new Random();
                         int result = rand.Next(2);
-                        if (player._InventorySlots < 20)
+                        if (player._InventorySlots < TotalInventorySpace)
                         {
                             switch (result)
                             {
@@ -236,7 +237,7 @@ namespace FaeriesAndTheWizard
                                     player._InventorySlots++;
                                     player._Health += 5;
                                     Processor.ProcessText("You have found a potion! Plus 10 points! You take a sip and increase your health by 5.\n", 10);
-                                    Processor.ProcessText($"Inventory Space: {player._InventorySlots}/20", 10);
+                                    Processor.ProcessText($"Inventory Space: {player._InventorySlots}/{TotalInventorySpace}", 10);
                                     Processor.ProcessText($"Score: {player._Score}", 10);
                                     Processor.ProcessText($"Health: {player._Health}", 10);
                                     break;
@@ -245,7 +246,7 @@ namespace FaeriesAndTheWizard
                                     player._Trinkets++;
                                     player._InventorySlots++;
                                     Processor.ProcessText("You have found a trinket! Plus 20 points!\n", 20);
-                                    Processor.ProcessText($"Inventory Space: {player._InventorySlots}/20", 10);
+                                    Processor.ProcessText($"Inventory Space: {player._InventorySlots}/{TotalInventorySpace}", 10);
                                     Processor.ProcessText($"Score: {player._Score}", 10);
                                     break;
                                 case 2:
@@ -253,7 +254,7 @@ namespace FaeriesAndTheWizard
                                     player._Artifacts++;
                                     player._InventorySlots++;
                                     Processor.ProcessText("You have found an artifact! Plus 30 point!\n", 30);
-                                    Processor.ProcessText($"Inventory Space: {player._InventorySlots}/20", 10);
+                                    Processor.ProcessText($"Inventory Space: {player._InventorySlots}/{TotalInventorySpace}", 10);
                                     Processor.ProcessText($"Score: {player._Score}", 10);
                                     break;
                                 default:

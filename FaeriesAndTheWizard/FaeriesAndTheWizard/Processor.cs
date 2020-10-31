@@ -41,9 +41,7 @@ namespace FaeriesAndTheWizard
             {
                 i++;
                 ProcessText(item, 10);
-            }
-
-            Console.WriteLine($"{i+1}: Open Inventory");
+            }      
         }
 
     }
