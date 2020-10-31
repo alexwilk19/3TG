@@ -13,16 +13,16 @@ namespace FaeriesAndTheWizard
         /// This is called from anywhere and fed a string to print the output to the console. 
         /// </summary>
         /// <param name="s"></param>
-        internal static void ProcessText(string s)
+        internal static void ProcessText(string s, int t)
         {
             s += "\n";
             foreach (char c in s)
             {
                 Console.Write(c);
-                Thread.Sleep(10);
+                Thread.Sleep(t);
             }
         }
-        internal static void ProcessText(string s, string add, string f)
+        internal static void ProcessText(string s, string add, string f, int t)
         {
             s += add;
             s += f;
@@ -30,7 +30,15 @@ namespace FaeriesAndTheWizard
             foreach (char c in s)
             {
                 Console.Write(c);
-                Thread.Sleep(10);
+                Thread.Sleep(t);
+            }
+        }
+
+        internal static void PresentOptions(string[] options)
+        {
+            foreach (var item in options)
+            {
+                ProcessText(item, );
             }
         }
 
