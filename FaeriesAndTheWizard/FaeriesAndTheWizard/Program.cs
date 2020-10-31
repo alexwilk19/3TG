@@ -89,8 +89,9 @@ namespace FaeriesAndTheWizard
             }
             else
             {
-            
+                player._Score += (eHP + eDMG) / 2;
                 Processor.ProcessText("The fae has been defeated!", 20);
+                Processor.ProcessText($"Score: {player._Score}", 10);
             }
          
 

@@ -121,7 +121,10 @@ namespace FaeriesAndTheWizard
 
             }
         }
-
+        internal Room(bool b)
+        {
+            Processor.PresentOptions(TextStorage.CauldronLevel);
+        }
 
     }
     internal class Rooms
