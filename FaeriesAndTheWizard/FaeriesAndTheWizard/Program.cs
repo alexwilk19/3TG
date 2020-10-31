@@ -9,19 +9,19 @@ namespace FaeriesAndTheWizard
 {
     class Program
     {
-        private void Combat(ref Wizard player, int eHP, int eDMG)
+        private static void Combat(ref Wizard player, int eHP, int eDMG)
         {
             Faerie enemy = new Faerie(eHP, eDMG);
-            Random r = new Random();
-            int dmg = (eDMG * 3) / r.Next(2, 4);
+
             Console.WriteLine("\n\n\n\n");
             Processor.ProcessText("An evil fae! It wants to kill you for using its kindred as reagents. How foolish. Show them who has the superior magic!",10);         
             Console.WriteLine("\n");
+        RetakeAttackChoice:
             Processor.ProcessText("Choose an ability to attack them:\n" +
                 "1. Staff Strike --- You deal between 10-20 damage, with no miss chance.\n" +
                 "2. Fireball --- You deal between 1-100 damage, with a 20% chance to instead damage yourself!\n" +
-                "3. Ice Strike --- You deal 30 damage, with a 20% chance to deal double damage, or miss.\n", 10);
-            RetakeAttackChoice:
+                "3. Ice Shard --- You deal 30 damage, with a 20% chance to deal double damage, or miss.\n", 10);
+            
             switch (Console.ReadLine())
             {
                 case "1":
@@ -54,6 +54,20 @@ namespace FaeriesAndTheWizard
                     Console.WriteLine("Take a proper choice!");
                     goto RetakeAttackChoice;
                  
+            }
+            Random r = new Random();
+            
+            if (enemy._Health > 0)
+            {
+                if (r.Next(2) == 0)
+                {
+                   
+                }
+                goto RetakeAttackChoice;
+            }
+            else
+            {
+                Processor.ProcessText("The fae has been defeated!", 20);
             }
         }
         static void Main(string[] args)
@@ -171,6 +185,7 @@ namespace FaeriesAndTheWizard
                         default:
                             break;
                     }
+                    Combat(ref player, faeHP, faeDMG);
                 }
 
             }
