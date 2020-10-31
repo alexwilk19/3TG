@@ -11,27 +11,31 @@ namespace FaeriesAndTheWizard
     {
         static void Main(string[] args)
         {
-          
+
             Processor.ProcessText(TextStorage.IntroText, 20);
 
             Wizard player = new Wizard(Console.ReadLine());
 
             Processor.ProcessText(TextStorage.PostNameIntroP1, player._Name, TextStorage.PostNameIntroP2, 20);
             Thread.Sleep(600);
-        
+
 
             Processor.ProcessText(TextStorage.FirstChoiceO12, 20);
-            NewRoom:
+        NewRoom:
             Random randy = new Random();
-            Room TrainingRoom = new Room(randy.Next(19000000)); 
+            Room TrainingRoom = new Room(randy.Next(19000000));
             string newRoomText = "Ah, a lower floor of the tower.\nAt a quick glance, this room contains ";
             int enemyNumberPerRoom = 0;
             int itemNumberPerRoom = 0;
+
             foreach (var item in TrainingRoom.Contents)
             {
-                Processor.ProcessText(item.Key + ". " +item.Value, 20);
 
-                if (item.Value.Contains("X"))
+                Processor.ProcessText(item.Key + ". " + item.Value, 20);
+
+
+
+                if (item.Value.Contains("F"))
                 {
                     enemyNumberPerRoom++;
                 }
@@ -57,9 +61,9 @@ namespace FaeriesAndTheWizard
             {
                 newRoomText += $"\nIt seems this will be a quiet room... perhaps...";
             }
-            Processor.ProcessText($"Score: {player._Score}",10);
+            Processor.ProcessText($"Score: {player._Score}", 10);
             Processor.ProcessText($"Room Number: {player._RoomsCleared + 1}/30", 10);
-           
+            Processor.ProcessText(newRoomText, 10);
 
             if (TrainingRoom.Contents.ContainsKey(Convert.ToInt32(Console.ReadLine())))
             {

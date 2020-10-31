@@ -9,13 +9,14 @@ namespace FaeriesAndTheWizard
 {
     public class Room
     {
-   
+
         public Dictionary<int, string> Contents = new Dictionary<int, string>();
         internal Room(int id)
         {
-            
+
             Random rand = new Random();
             int itemNumber = 0;
+            int variableCount = 0;
             string PFoe = "Possible Foe";
             string PItem = "Possible Item";
             for (int row = 0; row < 20; row++)
@@ -69,21 +70,41 @@ namespace FaeriesAndTheWizard
                                 {
                                     if (rand.Next(3) == 0)
                                     {
-                                        itemNumber++;
-                                        col++;
-                                        col++;
-                                        Console.Write($"X{itemNumber}");
-                                        Contents.Add(itemNumber, PFoe);
-                                        Console.Write(" ");
+                                        variableCount++;
+                                        if (variableCount < 9)
+                                        {
+                                            itemNumber++;
+                                            col++;
+                                            col++;
+
+                                            Console.Write($"X{itemNumber}");
+                                            Contents.Add(itemNumber, PFoe);
+                                            Console.Write(" ");
+                                        }
+                                        else
+                                        {
+                                            Console.Write(" ");
+                                        }
+                                      
                                     }
                                     else
                                     {
-                                        itemNumber++;
-                                        col++;
-                                        col++;
-                                        Console.Write($"I{itemNumber}");
-                                        Contents.Add(itemNumber, PItem);
-                                        Console.Write(" ");
+                                        variableCount++;
+                                        if (variableCount < 9)
+                                        {
+                                            itemNumber++;
+                                            col++;
+                                            col++;
+
+                                            Console.Write($"I{itemNumber}");
+                                            Contents.Add(itemNumber, PItem);
+                                            Console.Write(" ");
+                                        }
+                                        else
+                                        {
+                                            Console.Write(" ");
+                                        }
+
                                     }
                                 }
                                 else
@@ -100,7 +121,7 @@ namespace FaeriesAndTheWizard
 
             }
         }
-       
+
 
     }
     internal class Rooms
@@ -110,6 +131,6 @@ namespace FaeriesAndTheWizard
         {
             Training = new Room(i);
         }
-      
+
     }
 }
