@@ -16,15 +16,26 @@ namespace FaeriesAndTheWizard
             {
                 for (int x = 0; x < DrawRoom.GetLength(1); x++)
                 {
-                    if (i == 0)
+                    if (i == 0 || i == 19)
                     {
                         if (x == 0 || x == 19)
                         {
-
+                            Console.Write("|");
+                        }
+                        else
+                        {
+                            Console.Write("-");
+                        }
+                    }
+                    else
+                    {
+                        if (x == 0 || x == 19)
+                        {
+                            Console.Write("|");
                         }
                     }
                 }
-                Console.Write("-");
+              
             }
         }
        

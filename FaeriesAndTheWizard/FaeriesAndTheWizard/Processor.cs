@@ -36,10 +36,14 @@ namespace FaeriesAndTheWizard
 
         internal static void PresentOptions(string[] options)
         {
+            int i = 0;
             foreach (var item in options)
             {
+                i++;
                 ProcessText(item, 10);
             }
+
+            Console.WriteLine($"{i+1}: Open Inventory");
         }
 
     }

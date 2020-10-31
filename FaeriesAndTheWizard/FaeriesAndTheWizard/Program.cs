@@ -11,7 +11,63 @@ namespace FaeriesAndTheWizard
     {
         static void Main(string[] args)
         {
-           
+            Random rand = new Random();
+            for (int row = 0; row < 20; row++)
+            {
+                for (int col = 0; col < 41; col++)
+                {
+                    if (row == 0 || row == 19)//top or bottom rows
+                    {
+
+                        if (col == 0 || col == 40)
+                        {
+                            Console.Write("|");
+                        }
+                        else
+                        {
+                            if (col == 18 )
+                            {
+                                Console.Write("<");
+                            }
+                            else if (col == 22)
+                            {
+                                Console.Write(">");
+                            }
+                            else
+                            {
+                                Console.Write("-");
+                            }
+                         
+                        }
+                    }
+      
+                    else
+                    {
+                      
+                         if (col == 0 || col == 40)
+                        {
+                            Console.Write("|");
+                        }
+                        else
+                        {
+                            if (row == 18 && col == 20)
+                            {
+                               
+                                    Console.Write("@");
+                                
+
+                            }
+                            else
+                            {
+                                 Console.Write(" ");
+                            }
+                       
+                        }
+                    }
+                }
+                Console.Write("\n");
+
+            }
             Processor.ProcessText(TextStorage.IntroText, 20);
 
             Wizard player = new Wizard(Console.ReadLine());
