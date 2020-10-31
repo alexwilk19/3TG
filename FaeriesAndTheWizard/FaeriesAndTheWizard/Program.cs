@@ -22,74 +22,68 @@ namespace FaeriesAndTheWizard
 
             Processor.ProcessText(TextStorage.FirstChoiceO12, 20);
             NewRoom:
-            Room TrainingRoom = new Room(1);
-            Processor.ProcessText(("Score: " + player._Score), 20);
-            Processor.ProcessText(("Room: " + (player._RoomsCleared /10) + 1), 20);
+            Random randy = new Random();
+            Room TrainingRoom = new Room(randy.Next(19000000)); 
+            string newRoomText = "Ah, a lower floor of the tower.\nAt a quick glance, this room contains ";
+            int enemyNumberPerRoom = 0;
+            int itemNumberPerRoom = 0;
             foreach (var item in TrainingRoom.Contents)
             {
                 Processor.ProcessText(item.Key + ". " +item.Value, 20);
+
+                if (item.Value.Contains("X"))
+                {
+                    enemyNumberPerRoom++;
+                }
+                if (item.Value.Contains("I"))
+                {
+                    itemNumberPerRoom++;
+                }
             }
+            newRoomText += $"{enemyNumberPerRoom} possible faeries, and {itemNumberPerRoom} items in the room!";
+            if (itemNumberPerRoom > 3 && enemyNumberPerRoom > 3)
+            {
+                newRoomText += $"\nIt seems you have a lot of choice here. But choose carefully!";
+            }
+            else if (itemNumberPerRoom > 3)
+            {
+                newRoomText += $"\nThis room is a treasure trove, it seems! Choose wisely.";
+            }
+            else if (enemyNumberPerRoom > 3)
+            {
+                newRoomText += $"\nBe careful in this room, for you sense many faeries in here!";
+            }
+            else
+            {
+                newRoomText += $"\nIt seems this will be a quiet room... perhaps...";
+            }
+            Processor.ProcessText($"Score: {player._Score}",10);
+            Processor.ProcessText($"Room Number: {player._RoomsCleared + 1}/30", 10);
+           
 
             if (TrainingRoom.Contents.ContainsKey(Convert.ToInt32(Console.ReadLine())))
             {
                 Random rand = new Random();
-                int result = rand.Next(9);
+                int result = rand.Next(2);
                 switch (result)
                 {
                     case 0:
                         player._Score += 10;
-                        player._RoomsCleared += 1;
                         Processor.ProcessText("You have found a potion! Plus 10 points!", 10);
                         break;
                     case 1:
-                        player._Score += 10;
-                        player._RoomsCleared += 1;
-                        Processor.ProcessText("You have found a potion! Plus 10 points!", 10);
+                        player._Score += 20;
+                        Processor.ProcessText("You have found a trinket! Plus 20 points!", 20);
                         break;
                     case 2:
-                        player._Score += 10;
-                        player._RoomsCleared += 1;
-                        Processor.ProcessText("You have found a potion! Plus 10 points!", 10);
-                        break;
-                    case 3:
-                        player._Score += 10;
-                        player._RoomsCleared += 1;
-                        Processor.ProcessText("You have found a potion! Plus 10 points!", 10);
-                        break;
-                    case 4:
-                        player._Score += 10;
-                        player._RoomsCleared += 1;
-                        Processor.ProcessText("You have found a potion! Plus 10 points!", 10);
-                        break;
-                    case 5:
                         player._Score += 30;
-                        player._RoomsCleared += 1;
-                        Processor.ProcessText("You have found a trinket! Plus 30 points!", 20);
-                        break;
-                    case 6:
-                        player._Score += 30;
-                        player._RoomsCleared += 1;
-                        Processor.ProcessText("You have found a trinket! Plus 30 points!", 20);
-                        break;
-                    case 7:
-                        player._Score += 30;
-                        player._RoomsCleared += 1;
-                        Processor.ProcessText("You have found a trinket! Plus 30 points!", 20);
-                        break;
-                    case 8:
-                        player._Score += 100;
-                        player._RoomsCleared += 1;
-                        Processor.ProcessText("You have found an artifact! Plus 100 point!", 20);
-                        break;
-                    case 9:
-                        player._Score += 100;
-                        player._RoomsCleared += 1;
-                        Processor.ProcessText("You have found an artifact! Plus 100 point!", 20);
+                        Processor.ProcessText("You have found an artifact! Plus 30 point!", 30);
                         break;
                     default:
                         break;
                 }
             }
+            player._RoomsCleared++;
             goto NewRoom;
         }
     }
