@@ -15,6 +15,7 @@ namespace FaeriesAndTheWizard
         /// <param name="s"></param>
         internal static void ProcessText(string s)
         {
+            s += "\n";
             foreach (char c in s)
             {
                 Console.Write(c);
@@ -25,6 +26,7 @@ namespace FaeriesAndTheWizard
         {
             s += add;
             s += f;
+            s += "\n";
             foreach (char c in s)
             {
                 Console.Write(c);

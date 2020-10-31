@@ -8,7 +8,7 @@ namespace FaeriesAndTheWizard
 {
     internal class Wizard
     {
-        string _Name;
+        internal string _Name;
 
         internal Wizard(string name)
         {
