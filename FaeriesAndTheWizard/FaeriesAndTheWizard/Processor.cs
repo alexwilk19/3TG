@@ -38,7 +38,7 @@ namespace FaeriesAndTheWizard
         {
             foreach (var item in options)
             {
-                ProcessText(item, );
+                ProcessText(item, 10);
             }
         }
 
