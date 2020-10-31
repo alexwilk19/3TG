@@ -5,3 +5,10 @@ D:\VSRepos\BestIdea\3TG\FaeriesAndTheWizard\FaeriesAndTheWizard\obj\Debug\Faerie
 D:\VSRepos\BestIdea\3TG\FaeriesAndTheWizard\FaeriesAndTheWizard\obj\Debug\FaeriesAndTheWizard.csproj.CoreCompileInputs.cache
 D:\VSRepos\BestIdea\3TG\FaeriesAndTheWizard\FaeriesAndTheWizard\obj\Debug\FaeriesAndTheWizard.exe
 D:\VSRepos\BestIdea\3TG\FaeriesAndTheWizard\FaeriesAndTheWizard\obj\Debug\FaeriesAndTheWizard.pdb
+D:\TTG-BestIdea\ThreeThingGame\3TG\FaeriesAndTheWizard\FaeriesAndTheWizard\bin\Debug\FaeriesAndTheWizard.exe.config
+D:\TTG-BestIdea\ThreeThingGame\3TG\FaeriesAndTheWizard\FaeriesAndTheWizard\bin\Debug\FaeriesAndTheWizard.exe
+D:\TTG-BestIdea\ThreeThingGame\3TG\FaeriesAndTheWizard\FaeriesAndTheWizard\bin\Debug\FaeriesAndTheWizard.pdb
+D:\TTG-BestIdea\ThreeThingGame\3TG\FaeriesAndTheWizard\FaeriesAndTheWizard\obj\Debug\FaeriesAndTheWizard.csprojResolveAssemblyReference.cache
+D:\TTG-BestIdea\ThreeThingGame\3TG\FaeriesAndTheWizard\FaeriesAndTheWizard\obj\Debug\FaeriesAndTheWizard.csproj.CoreCompileInputs.cache
+D:\TTG-BestIdea\ThreeThingGame\3TG\FaeriesAndTheWizard\FaeriesAndTheWizard\obj\Debug\FaeriesAndTheWizard.exe
+D:\TTG-BestIdea\ThreeThingGame\3TG\FaeriesAndTheWizard\FaeriesAndTheWizard\obj\Debug\FaeriesAndTheWizard.pdb

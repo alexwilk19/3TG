@@ -8,9 +8,10 @@ namespace FaeriesAndTheWizard
 {
     internal class Item
     {
-        internal Item()
+        internal Item(int pInvID)
         {
-
+            invID = pInvID;
         }
+        private int invID;
     }
 }
