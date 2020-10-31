@@ -27,6 +27,7 @@ namespace FaeriesAndTheWizard
                 "1. Staff Strike --- You deal between 10-20 damage, with no miss chance - Costs 0 Mana.\n" +
                 "2. Fireball --- You deal between 1-100 damage, with a 20% chance to instead damage yourself! - Costs 5 Mana\n" +
                 "3. Ice Shard --- You deal 30 damage, with a 20% chance to deal double damage, or miss - Costs 10 Mana\n", 10);
+            //add a new text for the mana burn
 
             switch (Console.ReadLine())
             {
@@ -79,6 +80,9 @@ namespace FaeriesAndTheWizard
                         Processor.ProcessText("Not enough mana! Your mana: " + player._Mana + ". Make another choice.", 10);
                         goto RetakeAttackChoice;
                     }
+                    break;
+                case "4":
+                    //here goes the fourth spell
                     break;
                 default:
                     Console.WriteLine("Take a proper choice!");
@@ -134,6 +138,7 @@ namespace FaeriesAndTheWizard
                 "1. Staff Strike --- You deal between 10-20 damage, with no miss chance - Costs 0 Mana.\n" +
                 "2. Fireball --- You deal between 1-100 damage, with a 20% chance to instead damage yourself! - Costs 5 Mana\n" +
                 "3. Ice Shard --- You deal 30 damage, with a 20% chance to deal double damage, or miss - Costs 10 Mana\n", 10);
+            //final spell text goes here 
 
             switch (Console.ReadLine())
             {
@@ -186,6 +191,9 @@ namespace FaeriesAndTheWizard
                         Processor.ProcessText("Not enough mana! Your mana: " + player._Mana + ". Make another choice.", 10);
                         goto RetakeAttackChoice;
                     }
+                    break;
+                case "4":
+                    //final spell goes here
                     break;
                 default:
                     Console.WriteLine("Take a proper choice!");
