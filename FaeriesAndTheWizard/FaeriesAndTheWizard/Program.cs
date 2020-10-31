@@ -12,24 +12,48 @@ namespace FaeriesAndTheWizard
         private void Combat(ref Wizard player, int eHP, int eDMG)
         {
             Faerie enemy = new Faerie(eHP, eDMG);
+            Random r = new Random();
+            int dmg = (eDMG * 3) / r.Next(2, 4);
             Console.WriteLine("\n\n\n\n");
             Processor.ProcessText("An evil fae! It wants to kill you for using its kindred as reagents. How foolish. Show them who has the superior magic!",10);         
             Console.WriteLine("\n");
             Processor.ProcessText("Choose an ability to attack them:\n" +
                 "1. Staff Strike --- You deal between 10-20 damage, with no miss chance.\n" +
-                "2. Fireball --- You deal between 1-100 damage, with a chance to instead damage yourself!\n" +
+                "2. Fireball --- You deal between 1-100 damage, with a 20% chance to instead damage yourself!\n" +
                 "3. Ice Strike --- You deal 30 damage, with a 20% chance to deal double damage, or miss.\n", 10);
-
+            RetakeAttackChoice:
             switch (Console.ReadLine())
             {
                 case "1":
+                    enemy._Health -= player.StaffSmack();
                     break;
                 case "2":
+                    int tempdamage = player.Fireball();
+                    if (tempdamage == 0)
+                    {
+                      
+                    }
+                    else
+                    {
+                        enemy._Health -= tempdamage;
+                    }
+               
                     break;
                 case "3":
+                    int tdamage = player.IcicleSpear();
+                    if (tdamage == 0)
+                    {
+
+                    }
+                    else
+                    {
+                        enemy._Health -= tdamage;
+                    }
                     break;
                 default:
-                    break;
+                    Console.WriteLine("Take a proper choice!");
+                    goto RetakeAttackChoice;
+                 
             }
         }
         static void Main(string[] args)
@@ -87,6 +111,7 @@ namespace FaeriesAndTheWizard
             Processor.ProcessText($"Score: {player._Score}", 10);
             Processor.ProcessText($"Room Number: {player._RoomsCleared + 1}/30", 10);
             Processor.ProcessText(newRoomText, 10);
+            RetakeRoomChoice:
             int choice = Convert.ToInt32(Console.ReadLine());
             if (TrainingRoom.Contents.ContainsKey(choice))
             {
@@ -151,7 +176,8 @@ namespace FaeriesAndTheWizard
             }
             else if (!TrainingRoom.Contents.ContainsKey(choice))           
             {
-
+                Console.WriteLine("Wrong, take a listed choice.");
+                goto RetakeRoomChoice;
             }
             player._RoomsCleared++;
             Console.WriteLine("\n\n\n\n");
