@@ -1,0 +1,7 @@
+D:\VSRepos\BestIdea\3TG\FaeriesAndTheWizard\FaeriesAndTheWizard\bin\Debug\FaeriesAndTheWizard.exe.config
+D:\VSRepos\BestIdea\3TG\FaeriesAndTheWizard\FaeriesAndTheWizard\bin\Debug\FaeriesAndTheWizard.exe
+D:\VSRepos\BestIdea\3TG\FaeriesAndTheWizard\FaeriesAndTheWizard\bin\Debug\FaeriesAndTheWizard.pdb
+D:\VSRepos\BestIdea\3TG\FaeriesAndTheWizard\FaeriesAndTheWizard\obj\Debug\FaeriesAndTheWizard.csprojAssemblyReference.cache
+D:\VSRepos\BestIdea\3TG\FaeriesAndTheWizard\FaeriesAndTheWizard\obj\Debug\FaeriesAndTheWizard.csproj.CoreCompileInputs.cache
+D:\VSRepos\BestIdea\3TG\FaeriesAndTheWizard\FaeriesAndTheWizard\obj\Debug\FaeriesAndTheWizard.exe
+D:\VSRepos\BestIdea\3TG\FaeriesAndTheWizard\FaeriesAndTheWizard\obj\Debug\FaeriesAndTheWizard.pdb

@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace FaeriesAndTheWizard
 {
-    class Wizard
+    internal class Wizard
     {
+        string _Name;
+
+        internal Wizard(string name)
+        {
+            _Name = name;
+        }
     }
 }

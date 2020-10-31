@@ -10,7 +10,13 @@ namespace FaeriesAndTheWizard
     {
         static void Main(string[] args)
         {
-            Processor.ProcessText()
+           
+            Processor.ProcessText(TextStorage.IntroText);
+            Wizard player = new Wizard(Console.ReadLine());
+
+
+
+            Console.Read();
         }
     }
 }

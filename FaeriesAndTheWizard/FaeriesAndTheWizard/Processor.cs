@@ -9,6 +9,10 @@ namespace FaeriesAndTheWizard
 {
     static class Processor
     {
+        /// <summary>
+        /// This is called from anywhere and fed a string to print the output to the console. 
+        /// </summary>
+        /// <param name="s"></param>
         internal static void ProcessText(string s)
         {
             foreach (char c in s)
@@ -17,5 +21,16 @@ namespace FaeriesAndTheWizard
                 Thread.Sleep(10);
             }
         }
+        internal static void ProcessText(string s, string add, string f)
+        {
+            s += add;
+            s += f;
+            foreach (char c in s)
+            {
+                Console.Write(c);
+                Thread.Sleep(10);
+            }
+        }
+
     }
 }
