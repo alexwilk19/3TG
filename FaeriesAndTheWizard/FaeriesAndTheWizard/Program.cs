@@ -9,6 +9,7 @@ namespace FaeriesAndTheWizard
 {
     class Program
     {
+       static bool Dead = false;
         private static void Combat(ref Wizard player, int eHP, int eDMG)
         {
             Faerie enemy = new Faerie(eHP, eDMG);
@@ -26,6 +27,7 @@ namespace FaeriesAndTheWizard
             {
                 case "1":
                     enemy._Health -= player.StaffSmack();
+                    Processor.ProcessText("Their remaining health = " + enemy._Health, 10);
                     break;
                 case "2":
                     int tempdamage = player.Fireball();
@@ -36,6 +38,7 @@ namespace FaeriesAndTheWizard
                     else
                     {
                         enemy._Health -= tempdamage;
+                        Processor.ProcessText("Their remaining health = " + enemy._Health, 10);
                     }
                
                     break;
@@ -48,6 +51,7 @@ namespace FaeriesAndTheWizard
                     else
                     {
                         enemy._Health -= tdamage;
+                        Processor.ProcessText("Their remaining health = " + enemy._Health, 10);
                     }
                     break;
                 default:
@@ -61,18 +65,39 @@ namespace FaeriesAndTheWizard
             {
                 if (r.Next(2) == 0)
                 {
-                   
+                    player._Health -= enemy.MagicBlast();
+                    Processor.ProcessText("Your remaining health = " + player._Health, 10);
                 }
-                goto RetakeAttackChoice;
+                else
+                {
+                    player._Health -= enemy.Swipe();
+                    Processor.ProcessText("Your remaining health = " + player._Health, 10);
+                }
+
+                if (player._Health < 0)
+                {
+                    Processor.ProcessText("You have been slain! Restarting....",10);
+                    Dead = true;
+                    Thread.Sleep(2200);
+                    
+                }
+                else
+                {
+                    goto RetakeAttackChoice;
+                }
+             
             }
             else
             {
+            
                 Processor.ProcessText("The fae has been defeated!", 20);
             }
+         
+
         }
         static void Main(string[] args)
         {
-
+            EndOfGame2:
             Processor.ProcessText(TextStorage.IntroText, 20);
 
             Wizard player = new Wizard(Console.ReadLine());
@@ -186,6 +211,10 @@ namespace FaeriesAndTheWizard
                             break;
                     }
                     Combat(ref player, faeHP, faeDMG);
+                    if (Dead == true)
+                    {
+                        goto EndOfGame2;
+                    }
                 }
 
             }

@@ -45,22 +45,24 @@ namespace FaeriesAndTheWizard
         internal int IcicleSpear()
         {
             int damage = 30;
-            if(rand.NextDouble() < 0.2)
-            {
-                damage = (damage * 2);
-                Processor.ProcessText($"You fire an icicle spear\nCRITICAL HIT! You deal {damage} points of damage", 10);
-            }
-            if(rand.NextDouble() > 0.2 && rand.NextDouble() < 0.4)
+            if (rand.NextDouble() < 0.2)
             {
                 damage = 0;
                 Processor.ProcessText($"You fire an icicle spear\nYou miss, no damage dealt", 10);
             }
             else
             {
-                Processor.ProcessText($"You fire an icicle spear\nHit, you deal {damage} points of damage", 10);
+                if (rand.NextDouble() < 0.2)
+                {
+                    damage = (damage * 2);
+                    Processor.ProcessText($"You fire an icicle spear\nCRITICAL HIT! You deal {damage} points of damage", 10);
+                }
+                else
+                {
+                    Processor.ProcessText($"You fire an icicle spear\nYou deal {damage} points of damage", 10);
+                }
+                
             }
-            
-
             return damage;
         }
     }
