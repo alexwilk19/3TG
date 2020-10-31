@@ -32,6 +32,7 @@ namespace FaeriesAndTheWizard
                         Room TrainingRoom = new Room(1);
                     }
                     break;
+                //case "i":
                 default:
                     break;
             }
