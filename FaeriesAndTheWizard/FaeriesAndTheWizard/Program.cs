@@ -115,6 +115,7 @@ namespace FaeriesAndTheWizard
             }
             else
             {
+                player._FaeSlain++;
                 player._Score += (eHP + eDMG) / 2;
                 Processor.ProcessText("The fae has been defeated!", 20);
                 Processor.ProcessText($"Score: {player._Score}", 10);
@@ -274,6 +275,7 @@ namespace FaeriesAndTheWizard
 
                     else if (NormalRoom.Contents[Convert.ToInt32(choice)].Contains("F")) //combat stuff happens in here
                     {
+                        
                         Random crand = new Random();
                         int faeHP = 0;
                         int faeDMG = 0;
@@ -306,8 +308,13 @@ namespace FaeriesAndTheWizard
                                 break;
                         }
                         Combat(ref player, faeHP, faeDMG);
+                     
                         if (Dead == true)
                         {
+                            Processor.ProcessText($"TOTAL FAERIES KILLED: {player._FaeSlain}", 10);
+                            Processor.ProcessText($"TOTAL POTIONS COLLECTED: {player._Potions}", 10);
+                            Processor.ProcessText($"TOTAL TRINKETS FOUND: {player._Trinkets}", 10);
+                            Processor.ProcessText($"TOTAL ARTIFACTS RECOVERED: {player._Artifacts}", 10);
                             Processor.ProcessText($"TOTAL ROOMS CLEARED: {player._RoomsCleared}", 10);
                             Processor.ProcessText($"TOTAL SCORE: {player._Score}", 10);
                             Console.ReadKey();
@@ -350,7 +357,7 @@ namespace FaeriesAndTheWizard
                     itemNumberPerRoom++;
                 }
             }
-            Processor.ProcessText("r. Skip room", 10);
+            Processor.ProcessText("r. Next room", 10);
         }
     }
 }

@@ -17,8 +17,8 @@ namespace FaeriesAndTheWizard
             Random rand = new Random();
             int itemNumber = 0;
             int variableCount = 0;
-            string PFoe = "Possible Foe";
-            string PItem = "Possible Item";
+            string PFoe = "Fight Faerie";
+            string PItem = "Unknown Item";
             for (int row = 0; row < 20; row++)
             {
                 for (int col = 0; col < 41; col++)

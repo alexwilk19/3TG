@@ -16,6 +16,7 @@ namespace FaeriesAndTheWizard
         internal int _InventorySlots;
         internal int _RoomsCleared;
         internal int _Health;
+        internal int _FaeSlain;
         internal int _Mana;
         internal Wizard(string name)
         {
@@ -27,6 +28,7 @@ namespace FaeriesAndTheWizard
             _Artifacts = 0;
             _Trinkets = 0;
             _InventorySlots = 0;
+            _FaeSlain = 0;
             _Mana = 50;
         }
 
