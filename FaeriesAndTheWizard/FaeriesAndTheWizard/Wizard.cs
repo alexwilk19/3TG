@@ -10,11 +10,13 @@ namespace FaeriesAndTheWizard
     {
         internal string _Name;
         internal int _Score;
+        internal int _RoomsCleared;
 
         internal Wizard(string name)
         {
             _Score = 0;
             _Name = name;
+            _RoomsCleared = 0;
         }
     }
 }
