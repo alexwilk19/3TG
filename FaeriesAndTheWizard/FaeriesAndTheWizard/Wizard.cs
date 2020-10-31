@@ -27,7 +27,7 @@ namespace FaeriesAndTheWizard
             int damage = rand.Next(1, 100);
             if(rand.NextDouble() < 0.1)
             {
-                _Health -= damage;
+                _Health -= (damage / 2);
                 Processor.ProcessText($"You got caught in the fireball and took {damage} points of damage", 10);
                 return 0;
             }
@@ -45,24 +45,22 @@ namespace FaeriesAndTheWizard
         internal int IcicleSpear()
         {
             int damage = 30;
-            if (rand.NextDouble() < 0.2)
+            if(rand.NextDouble() < 0.2)
+            {
+                damage = (damage * 2);
+                Processor.ProcessText($"You fire an icicle spear\nCRITICAL HIT! You deal {damage} points of damage", 10);
+            }
+            if(rand.NextDouble() > 0.2 && rand.NextDouble() < 0.4)
             {
                 damage = 0;
                 Processor.ProcessText($"You fire an icicle spear\nYou miss, no damage dealt", 10);
             }
             else
             {
-                if (rand.NextDouble() < 0.2)
-                {
-                    damage = (damage * 2);
-                    Processor.ProcessText($"You fire an icicle spear\nCRITICAL HIT! You deal {damage} points of damage", 10);
-                }
-                else
-                {
-                    Processor.ProcessText($"You fire an icicle spear\nYou deal {damage} points of damage", 10);
-                }
-                
+                Processor.ProcessText($"You fire an icicle spear\nHit, you deal {damage} points of damage", 10);
             }
+            
+
             return damage;
         }
     }

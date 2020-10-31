@@ -82,6 +82,7 @@ namespace FaeriesAndTheWizard
 
         internal int AuroraAura()
         {
+            //randomness
             int damage = rand.Next(10, 60);
             int selfDamage = rand.Next(20, 50);
             _Health -= selfDamage;
