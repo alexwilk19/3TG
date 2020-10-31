@@ -88,6 +88,7 @@ namespace FaeriesAndTheWizard
                         Processor.PresentOptions(TextStorage.TrainingRoomDraw);
                     }
                     break;
+                //case "i":
                 default:
                     break;
             }
