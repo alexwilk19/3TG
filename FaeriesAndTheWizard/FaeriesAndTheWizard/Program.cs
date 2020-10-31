@@ -19,42 +19,64 @@ namespace FaeriesAndTheWizard
 
             Console.WriteLine("\n\n\n\n");
             Processor.ProcessText("An evil fae! It wants to kill you for using its kindred as reagents. How foolish. Show them who has the superior magic!", 10);
-            Console.WriteLine("\n");
+            Processor.ProcessText("Your remaining health = " + player._Health, 10);
+            Processor.ProcessText("Your remaining mana = " + player._Mana, 10);
         RetakeAttackChoice:
             Processor.ProcessText("Choose an ability to attack them:\n" +
-                "1. Staff Strike --- You deal between 10-20 damage, with no miss chance.\n" +
-                "2. Fireball --- You deal between 1-100 damage, with a 20% chance to instead damage yourself!\n" +
-                "3. Ice Shard --- You deal 30 damage, with a 20% chance to deal double damage, or miss.\n", 10);
+                "1. Staff Strike --- You deal between 10-20 damage, with no miss chance - Costs 0 Mana.\n" +
+                "2. Fireball --- You deal between 1-100 damage, with a 20% chance to instead damage yourself! - Costs 5 Mana\n" +
+                "3. Ice Shard --- You deal 30 damage, with a 20% chance to deal double damage, or miss - Costs 10 Mana\n", 10);
 
             switch (Console.ReadLine())
             {
                 case "1":
                     enemy._Health -= player.StaffSmack();
-                    Processor.ProcessText("Their remaining health = " + enemy._Health, 10);
+            
                     break;
                 case "2":
-                    int tempdamage = player.Fireball();
-                    if (tempdamage == 0)
+                    if (player._Mana >= 5)
                     {
+                        player._Mana -= 5;
+                        int tempdamage = player.Fireball();
+                        if (tempdamage == 0)
+                        {
+
+                        }
+                        else
+                        {
+                            enemy._Health -= tempdamage;
+                    
+                        }
 
                     }
                     else
                     {
-                        enemy._Health -= tempdamage;
-                        Processor.ProcessText("Their remaining health = " + enemy._Health, 10);
+                        Processor.ProcessText("Not enough mana! Your mana: " + player._Mana + ". Make another choice.", 10);
+                        goto RetakeAttackChoice;
                     }
 
+                   
                     break;
                 case "3":
-                    int tdamage = player.IcicleSpear();
-                    if (tdamage == 0)
+                    if (player._Mana >= 10)
                     {
+                        player._Mana -= 10;
+                        int tdamage = player.IcicleSpear();
+                        if (tdamage == 0)
+                        {
 
+                        }
+                        else
+                        {
+                            enemy._Health -= tdamage;
+                            
+                        }
+                        
                     }
                     else
                     {
-                        enemy._Health -= tdamage;
-                        Processor.ProcessText("Their remaining health = " + enemy._Health, 10);
+                        Processor.ProcessText("Not enough mana! Your mana: " + player._Mana + ". Make another choice.", 10);
+                        goto RetakeAttackChoice;
                     }
                     break;
                 default:
@@ -63,32 +85,33 @@ namespace FaeriesAndTheWizard
 
             }
             Random r = new Random();
-
+            Processor.ProcessText("Their remaining health = " + enemy._Health, 10);
             if (enemy._Health > 0)
             {
                 if (r.Next(2) == 0)
                 {
                     player._Health -= enemy.MagicBlast();
-                    Processor.ProcessText("Your remaining health = " + player._Health, 10);
+
                 }
                 else
                 {
                     player._Health -= enemy.Swipe();
                     Processor.ProcessText("Your remaining health = " + player._Health, 10);
+                    Processor.ProcessText("Your remaining mana = " + player._Mana, 10);
                 }
 
                 if (player._Health < 0)
                 {
                     Processor.ProcessText("You have been slain! Restarting....", 10);
                     Dead = true;
-                    Thread.Sleep(2200);
+             
 
                 }
                 else
                 {
                     goto RetakeAttackChoice;
                 }
-
+                Processor.ProcessText("Your remaining health = " + player._Health, 10);
             }
             else
             {
@@ -106,11 +129,13 @@ namespace FaeriesAndTheWizard
 
             Wizard player = new Wizard(Console.ReadLine());
 
-            Processor.ProcessText(TextStorage.PostNameIntroP1, player._Name, TextStorage.PostNameIntroP2, 20);
+            Processor.ProcessText(TextStorage.PostNameIntroP1, player._Name + ",", TextStorage.PostNameIntroP2, 20);
             Thread.Sleep(600);
 
 
-            Processor.ProcessText(TextStorage.FirstChoiceO12, 20);
+            Processor.ProcessText("You have 30 floors ahead of you to clear.. they are filled with Items and Fae! You can get and fight everything in a room,\n" +
+                "or you can skip it entirely. Every 5 floors is a cauldron. With this,\n" +
+                "you can heal yourself, increase your standing with the gods(score increase), or place your inventory items.", 20);
         NewRoom:
             Random randy = new Random();
 
@@ -118,21 +143,25 @@ namespace FaeriesAndTheWizard
             //cauldron room
             if ((player._RoomsCleared + 1) % 5 == 0 && player._RoomsCleared != 29)
             {
+                player._RoomsCleared++;
                 bool b = false;
                 Room CauldronRoom = new Room(b);
                 Processor.ProcessText("A cauldron room! You have choices, yes, choices! You can either:\n" +
                     "1. Increase your health by 150\n" +
-                    "2. Increase your score by 50\n" +
+                    "2. Increase your mana by 35\n" +
                     "3. Store Items\n", 10);
                 WRONGCHOICE:
                 string input = Console.ReadLine();
                 switch (input)
                 {
                     case "1":
+                        player._Health += 150;
                         break;
                     case "2":
+                        player._Mana += 35;
                         break;
                     case "3":
+                        player._InventorySlots = 0;
                         break;
                     default:
                         Console.WriteLine("Wrong choice again. Or for the first time. This tower is timeless.");
@@ -173,6 +202,8 @@ namespace FaeriesAndTheWizard
                     newRoomText += $"\nIt seems this will be a quiet room... perhaps...";
                 }
                 Processor.ProcessText($"Score: {player._Score}", 10);
+                Processor.ProcessText($"Health: {player._Health}", 10);
+                Processor.ProcessText($"Mana: {player._Mana}", 10);
                 Processor.ProcessText($"Room Number: {player._RoomsCleared + 1}/30", 10);
                 Processor.ProcessText($"Inventory Space: {player._InventorySlots}/20", 10);
                 Processor.ProcessText(newRoomText, 10);
@@ -182,8 +213,9 @@ namespace FaeriesAndTheWizard
                 if (choice == "r" || choice == "R")
                 {
                     player._RoomsCleared++;
-                    Processor.ProcessText("",10);
-                    Console.WriteLine("\n\n\n\n");
+                    Processor.ProcessText("Heading to the next room. You gain +5 mana.",10);
+                    Console.WriteLine("\n");
+
                     goto NewRoom;
                 }
                 else if (NormalRoom.Contents.ContainsKey(Convert.ToInt32(choice)))
@@ -201,19 +233,27 @@ namespace FaeriesAndTheWizard
                                     player._Score += 10;
                                     player._Potions++;
                                     player._InventorySlots++;
+                                    player._Health += 5;
                                     Processor.ProcessText("You have found a potion! Plus 10 points! You take a sip and increase your health by 5.\n", 10);
+                                    Processor.ProcessText($"Inventory Space: {player._InventorySlots}/20", 10);
+                                    Processor.ProcessText($"Score: {player._Score}", 10);
+                                    Processor.ProcessText($"Health: {player._Health}", 10);
                                     break;
                                 case 1:
                                     player._Score += 20;
                                     player._Trinkets++;
                                     player._InventorySlots++;
                                     Processor.ProcessText("You have found a trinket! Plus 20 points!\n", 20);
+                                    Processor.ProcessText($"Inventory Space: {player._InventorySlots}/20", 10);
+                                    Processor.ProcessText($"Score: {player._Score}", 10);
                                     break;
                                 case 2:
                                     player._Score += 30;
                                     player._Artifacts++;
                                     player._InventorySlots++;
                                     Processor.ProcessText("You have found an artifact! Plus 30 point!\n", 30);
+                                    Processor.ProcessText($"Inventory Space: {player._InventorySlots}/20", 10);
+                                    Processor.ProcessText($"Score: {player._Score}", 10);
                                     break;
                                 default:
                                     break;
@@ -268,7 +308,13 @@ namespace FaeriesAndTheWizard
                         Combat(ref player, faeHP, faeDMG);
                         if (Dead == true)
                         {
-                            goto EndOfGame2;
+                            Processor.ProcessText($"TOTAL ROOMS CLEARED: {player._RoomsCleared}", 10);
+                            Processor.ProcessText($"TOTAL SCORE: {player._Score}", 10);
+                            Console.ReadKey();
+                            
+                             goto EndOfGame2;
+                            
+                        
                         }
                         NormalRoom.Contents.Remove(Convert.ToInt32(choice));
                         PrintOptions(NormalRoom);

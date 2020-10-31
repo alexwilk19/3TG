@@ -16,6 +16,7 @@ namespace FaeriesAndTheWizard
         internal int _InventorySlots;
         internal int _RoomsCleared;
         internal int _Health;
+        internal int _Mana;
         internal Wizard(string name)
         {
             _Score = 0;
@@ -26,6 +27,7 @@ namespace FaeriesAndTheWizard
             _Artifacts = 0;
             _Trinkets = 0;
             _InventorySlots = 0;
+            _Mana = 50;
         }
 
         Random rand = new Random();
