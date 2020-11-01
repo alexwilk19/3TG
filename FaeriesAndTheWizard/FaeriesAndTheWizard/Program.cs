@@ -90,6 +90,7 @@ namespace FaeriesAndTheWizard
                     if (player._Mana >= 15)
                     {
                         enemy._Health -= player.TimeFreeze();
+                        Processor.ProcessText("\nTheir remaining health = " + enemy._Health, "red", 10);
                         goto RetakeAttackChoice;
                     }
                     else
@@ -149,7 +150,7 @@ namespace FaeriesAndTheWizard
                 player._FaeSlain++;
                 player._Score += (eHP + eDMG) / 2;
                 Processor.ProcessText("The fae has been defeated!", "magenta",20);
-                Processor.ProcessText($"Score: {player._Score}", 10);
+                Processor.ProcessText($"Score: {player._Score}", "yellow",10);
             }
 
 
