@@ -130,14 +130,14 @@ namespace FaeriesAndTheWizard
         {
             Processor.ProcessText("Aha, the big one! Imagine how many spells you can cast if you chop off her wings and turn them into potions!\n" +
                                   "But she will put up quite the fight, and you had better be prepared. She has a lot of health, but if you can\n" +
-                                  "pull this off, then those damned faeries will leave you alone!", 10);
+                                  "pull this off, then those damned faeries will leave you alone!","magenta" ,10);
             Processor.PresentOptions(TextStorage.BossFloor);
         }
         internal Room(char c, int ver)
         {            
             Processor.ProcessText("Aha, the big one! Imagine how many spells you can cast if you chop off her wings and turn them into potions!\n" +
-                                   "But something seems....off\nShe feels much more powerful than you first thought\nPrepare for a very\nvery\nvery hard fight", 10);
-            Console.ForegroundColor = ConsoleColor.Red;
+                                   "But something seems....off\nShe feels much more powerful than you first thought\nPrepare for a very\nvery\nvery hard fight","red" ,10);
+           
             Processor.PresentOptions(TextStorage.BossFloorHard);
         }
 

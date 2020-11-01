@@ -22,6 +22,45 @@ namespace FaeriesAndTheWizard
                 Thread.Sleep(t);
             }
         }
+        internal static void ProcessText(string s, string colour, int t)
+        {
+            switch (colour)
+            {
+                case "blue":
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    break;
+                case "red":
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    break;
+                case "green":
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    break;
+                case "yellow":
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    break;
+                case "magenta":
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    break;
+                case "cyan":
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    break;
+                case "darkblue":
+                    Console.ForegroundColor = ConsoleColor.DarkBlue;
+                    break;
+                case "darkcyan":
+                    Console.ForegroundColor = ConsoleColor.DarkCyan;
+                    break;
+                default:
+                    break;
+            }
+            s += "\n";
+            foreach (char c in s)
+            {
+                Console.Write(c);
+                Thread.Sleep(t);
+            }
+            Console.ForegroundColor = ConsoleColor.White;
+        }
         internal static void ProcessText(string s, string add, string f, int t)
         {
             s += add;
@@ -40,7 +79,7 @@ namespace FaeriesAndTheWizard
             foreach (var item in options)
             {
                 i++;
-                ProcessText(item, 40);
+                ProcessText(item, 10);
             }      
         }
 
