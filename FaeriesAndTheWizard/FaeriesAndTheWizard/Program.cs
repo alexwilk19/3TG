@@ -151,10 +151,10 @@ namespace FaeriesAndTheWizard
             else
             {
                 enemy = new BossFae();
-                enemy._Health /= 2;
+                enemy._Health -= 250;
             }
 
-            Processor.ProcessText("Your remaining health = " + player._Health, "green", 10);
+            Processor.ProcessText("\nYour remaining health = " + player._Health, "green", 10);
             Processor.ProcessText("Your remaining mana = " + player._Mana, "blue", 10);
             Processor.ProcessText("\nTheir remaining health = " + enemy._Health, "red", 10);
         RetakeAttackChoice:
