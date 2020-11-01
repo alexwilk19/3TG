@@ -35,5 +35,13 @@ namespace FaeriesAndTheWizard
             Processor.ProcessText($"The fae blasts you with magic, dealing {finalDamage} points of Damage", 10);
             return finalDamage;
         }
+
+        internal int LesserWildDust()
+        {
+            int damage = (_Damage / 4) + (rand.Next(1,10));
+            _Health += damage / 2;
+            Processor.ProcessText($"The faerie shakes its wings and released wild dust, healing itself for {damage / 2} points and dealing {damage} damage to you in the process!", 10);
+            return damage;
+        }
     }
 }

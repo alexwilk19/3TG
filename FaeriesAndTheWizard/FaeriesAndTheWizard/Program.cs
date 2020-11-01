@@ -107,16 +107,28 @@ namespace FaeriesAndTheWizard
             Processor.ProcessText("\nTheir remaining health = " + enemy._Health, "red", 10);
             if (enemy._Health > 0)
             {
-                if (r.Next(2) == 0)
+                switch (r.Next(5))
                 {
-                    player._Health -= enemy.MagicBlast();
-
+                    case 0:
+                        player._Health -= enemy.Swipe();
+                        break;
+                    case 1:
+                        player._Health -= enemy.MagicBlast();
+                        break;
+                    case 2:
+                        player._Health -= enemy.Swipe();
+                        break;
+                    case 3:
+                        player._Health -= enemy.LesserWildDust();
+                        break;
+                    case 4:
+                        player._Health -= enemy.Swipe();
+                        break;
+                    default:
+                        player._Health -= enemy.Swipe();
+                        break;
                 }
-                else
-                {
-                    player._Health -= enemy.Swipe();
-     
-                }
+   
                 Processor.ProcessText("\nYour remaining health = " + player._Health, "green", 10);
                 Processor.ProcessText("Your remaining mana = " + player._Mana, "blue", 10);
                 if (player._Health < 0)
