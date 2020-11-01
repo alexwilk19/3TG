@@ -475,7 +475,7 @@ namespace FaeriesAndTheWizard
                     {
 
                         Random rand = new Random();
-                        int result = rand.Next(2);
+                        int result = rand.Next(3);
                         if (player._InventorySlots < TotalInventorySpace)
                         {
                             switch (result)
@@ -507,6 +507,12 @@ namespace FaeriesAndTheWizard
                                     Processor.ProcessText($"Score: {player._Score}", "yellow",10);
                                     break;
                                 default:
+                                    player._Score += 5;
+                             
+                                    player._InventorySlots++;
+                                    Processor.ProcessText("You have found an marble! Plus 5 points!\n", "cyan", 30);
+                                    Processor.ProcessText($"Inventory Space: {player._InventorySlots}/{TotalInventorySpace}", 10);
+                                    Processor.ProcessText($"Score: {player._Score}", "yellow", 10);
                                     break;
                             }
                             NormalRoom.Contents.Remove(Convert.ToInt32(choice));
