@@ -25,16 +25,17 @@ namespace FaeriesAndTheWizard
             Processor.ProcessText("\nTheir remaining health = " + enemy._Health, "red", 10);
         RetakeAttackChoice:
             Processor.ProcessText("Choose an ability to attack them:\n" +
-                "1. Staff Strike --- You deal between 10-20 damage, with no miss chance - Costs 0 Mana.\n" +
-                "2. Fireball --- You deal between 1-100 damage, with a 20% chance to instead damage yourself! - Costs 5 Mana\n" +
-                "3. Ice Shard --- You deal 30 damage, with a 20% chance to deal double damage, or miss - Costs 10 Mana\n" + 
-                "4. Mana Drain --- You only deal 5 damage but recover 20 mana","yellow" ,10);
+            "1. Staff Strike --- You deal between 10-20 damage, with no miss chance - Costs 0 Mana.\n" +
+            "2. Fireball --- You deal between 1-100 damage, with a 20% chance to instead damage yourself! - Costs 5 Mana\n" +
+            "3. Ice Shard --- You deal 30 damage, with a 20% chance to deal double damage, or miss - Costs 10 Mana\n" +
+            "4. Mana Drain --- You only deal 5 damage but recover 20 mana\n" +
+            "5. Stop Time --- You deal 25 damage and stop the fae from attacking this turn. - Costs 15 Mana\n", "yellow", 10);
 
             switch (Console.ReadLine())
             {
                 case "1":
                     enemy._Health -= player.StaffSmack();
-            
+
                     break;
                 case "2":
                     if (player._Mana >= 5)
@@ -48,7 +49,7 @@ namespace FaeriesAndTheWizard
                         else
                         {
                             enemy._Health -= tempdamage;
-                    
+
                         }
 
                     }
@@ -58,7 +59,7 @@ namespace FaeriesAndTheWizard
                         goto RetakeAttackChoice;
                     }
 
-                   
+
                     break;
                 case "3":
                     if (player._Mana >= 10)
@@ -72,19 +73,31 @@ namespace FaeriesAndTheWizard
                         else
                         {
                             enemy._Health -= tdamage;
-                            
+
                         }
-                        
+
                     }
                     else
                     {
-                        Processor.ProcessText("\nNot enough mana! Your mana: " + player._Mana + ". Make another choice.","blue" ,10);
+                        Processor.ProcessText("\nNot enough mana! Your mana: " + player._Mana + ". Make another choice.", "blue", 10);
                         goto RetakeAttackChoice;
                     }
                     break;
                 case "4":
                     enemy._Health -= player.ManaDrain();
                     break;
+                case "5":
+                    if (player._Mana >= 15)
+                    {
+                        enemy._Health -= player.TimeFreeze();
+                        goto RetakeAttackChoice;
+                    }
+                    else
+                    {
+                        Processor.ProcessText("\nNot enough mana! Your mana: " + player._Mana + ". Make another choice.", "blue", 10);
+                        goto RetakeAttackChoice;
+                    }
+
                 default:
                     Processor.ProcessText("\nTake a proper choice!", "red", 10);
                     goto RetakeAttackChoice;
@@ -162,7 +175,8 @@ namespace FaeriesAndTheWizard
                "1. Staff Strike --- You deal between 10-20 damage, with no miss chance - Costs 0 Mana.\n" +
                "2. Fireball --- You deal between 1-100 damage, with a 20% chance to instead damage yourself! - Costs 5 Mana\n" +
                "3. Ice Shard --- You deal 30 damage, with a 20% chance to deal double damage, or miss - Costs 10 Mana\n" +
-               "4. Mana Drain --- You only deal 5 damage but recover 20 mana", "yellow", 10);
+               "4. Mana Drain --- You only deal 5 damage but recover 20 mana\n" +
+               "5. Stop Time --- You deal 25 damage and stop the fae from attacking this turn. - Costs 15 Mana\n", "yellow", 10);
 
             switch (Console.ReadLine())
             {
@@ -219,6 +233,18 @@ namespace FaeriesAndTheWizard
                 case "4":
                     enemy._Health -= player.ManaDrain();
                     break;
+                case "5":
+                    if (player._Mana >= 15)
+                    {
+                        enemy._Health -= player.TimeFreeze();
+                        goto RetakeAttackChoice;
+                    }
+                    else
+                    {
+                        Processor.ProcessText("\nNot enough mana! Your mana: " + player._Mana + ". Make another choice.", "blue", 10);
+                        goto RetakeAttackChoice;
+                    }
+                  
                 default:
                     Processor.ProcessText("\nTake a proper choice!", "red", 10);
                     goto RetakeAttackChoice;

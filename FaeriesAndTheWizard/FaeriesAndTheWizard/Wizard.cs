@@ -83,5 +83,12 @@ namespace FaeriesAndTheWizard
             Processor.ProcessText($"You grab hold of the fae with your magic, and slowly drain the mana from them - knowing just how to make it as painful for them as possible\nYou deal {damage} points of damage", 10);
             return damage;
         }
+
+        internal int TimeFreeze()
+        {
+            int damage = 25;
+            Processor.ProcessText($"You tell the Fae that it is TIME TO STOP, dealing {damage} points of damage and preventing the Faerie from attacking on this turn.", 10);
+            return damage;
+        }
     }
 }
