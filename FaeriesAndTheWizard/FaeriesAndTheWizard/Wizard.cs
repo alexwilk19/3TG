@@ -22,7 +22,7 @@ namespace FaeriesAndTheWizard
         {
             _Score = 0;
             _Name = name;
-            _RoomsCleared = 25;
+            _RoomsCleared = 0;
             _Health = 200;
             _Potions = 0;
             _Artifacts = 0;
@@ -73,6 +73,14 @@ namespace FaeriesAndTheWizard
             }
             
 
+            return damage;
+        }
+
+        internal int ManaDrain()
+        {
+            _Mana += 20;
+            int damage = 5;
+            Processor.ProcessText($"You grab hold of the fae with your magic, and slowly drain the mana from them - knowing just how to make it as painful for them as possible\nYou deal {damage} points of damage", 10);
             return damage;
         }
     }

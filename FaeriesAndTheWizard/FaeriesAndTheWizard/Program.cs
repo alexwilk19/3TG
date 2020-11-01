@@ -26,8 +26,8 @@ namespace FaeriesAndTheWizard
             Processor.ProcessText("Choose an ability to attack them:\n" +
                 "1. Staff Strike --- You deal between 10-20 damage, with no miss chance - Costs 0 Mana.\n" +
                 "2. Fireball --- You deal between 1-100 damage, with a 20% chance to instead damage yourself! - Costs 5 Mana\n" +
-                "3. Ice Shard --- You deal 30 damage, with a 20% chance to deal double damage, or miss - Costs 10 Mana\n", 10);
-            //add a new text for the mana burn
+                "3. Ice Shard --- You deal 30 damage, with a 20% chance to deal double damage, or miss - Costs 10 Mana\n" + 
+                "4. Mana Drain --- You only deal 5 damage but recover 20 mana", 10);
 
             switch (Console.ReadLine())
             {
@@ -82,7 +82,7 @@ namespace FaeriesAndTheWizard
                     }
                     break;
                 case "4":
-                    //here goes the fourth spell
+                    enemy._Health -= player.ManaDrain();
                     break;
                 default:
                     Console.WriteLine("Take a proper choice!");
@@ -130,15 +130,25 @@ namespace FaeriesAndTheWizard
         }
         private static void FinalCombat(ref Wizard player)
         {
-            BossFae enemy = new BossFae();
+            FeyQueenBase enemy;
+            if(player._FaeSlain >= 25)
+            {                
+                enemy = new HellFae();
+                enemy._Health += 800;
+            }
+            else
+            {
+                enemy = new BossFae();
+            }
+
             Processor.ProcessText("Your remaining health = " + player._Health, 10);
             Processor.ProcessText("Your remaining mana = " + player._Mana, 10);
         RetakeAttackChoice:
             Processor.ProcessText("Choose an ability to attack them:\n" +
                 "1. Staff Strike --- You deal between 10-20 damage, with no miss chance - Costs 0 Mana.\n" +
                 "2. Fireball --- You deal between 1-100 damage, with a 20% chance to instead damage yourself! - Costs 5 Mana\n" +
-                "3. Ice Shard --- You deal 30 damage, with a 20% chance to deal double damage, or miss - Costs 10 Mana\n", 10);
-            //final spell text goes here 
+                "3. Ice Shard --- You deal 30 damage, with a 20% chance to deal double damage, or miss - Costs 10 Mana\n" +
+                "4. Mana Drain --- You only deal 5 damage but recover 20 mana", 10); 
 
             switch (Console.ReadLine())
             {
@@ -193,7 +203,7 @@ namespace FaeriesAndTheWizard
                     }
                     break;
                 case "4":
-                    //final spell goes here
+                    enemy._Health -= player.ManaDrain();
                     break;
                 default:
                     Console.WriteLine("Take a proper choice!");
@@ -252,9 +262,28 @@ namespace FaeriesAndTheWizard
             else
             {
                 player._FaeSlain++;
-                player._Score += 1000;
-                Processor.ProcessText("The fae have been defeated!", 20);
-                Processor.ProcessText($"Score: {player._Score}", 10);
+                if(player._FaeSlain >= 26)
+                {
+                    Console.ForegroundColor = ConsoleColor.White;
+                    player._Score += 5000;
+                    Processor.ProcessText("The Fey Queen HELL MODE has been defeated!\nWell Done", 20);
+                    Processor.ProcessText("Congratulations! You have beaten the tower and the Secret Boss\nFor the extra effort and skill, +5000 Points", 20);
+                }
+                else
+                {
+                    player._Score += 1000;
+                    Processor.ProcessText("The Fey Queen has been defeated!", 20);
+                    Processor.ProcessText("Congratulations! You have beaten the tower +1000 Points", 20);                    
+                }              
+                
+                Processor.ProcessText($"TOTAL FAERIES KILLED: {player._FaeSlain}", 10);
+                Processor.ProcessText($"TOTAL POTIONS COLLECTED: {player._Potions}", 10);
+                Processor.ProcessText($"TOTAL TRINKETS FOUND: {player._Trinkets}", 10);
+                Processor.ProcessText($"TOTAL ARTIFACTS RECOVERED: {player._Artifacts}", 10);
+                Processor.ProcessText($"TOTAL ROOMS CLEARED: {player._RoomsCleared}", 10);
+                Processor.ProcessText($"TOTAL SCORE: {player._Score}", 10);
+                string credits = "you win!";
+                Room CreditRoom = new Room(credits);
                 Console.ReadKey();
             }
 
@@ -313,7 +342,18 @@ namespace FaeriesAndTheWizard
             else if (player._RoomsCleared == 29)
             {
                 char c = '~';
-                Room finalRoom = new Room(c);
+                char d = '#';
+                int version = 2;
+                Room finalRoom;
+                if(player._FaeSlain >= 25)
+                {                    
+                    finalRoom = new Room(d, version);
+                }
+                else
+                {
+                    finalRoom = new Room(c);
+                }
+                
                 FinalCombat(ref player);
                 
             }

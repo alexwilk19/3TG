@@ -47,7 +47,7 @@ namespace FaeriesAndTheWizard
                          @"|         THE  FEY  QUEEN               |",
                          @"|             | | |                     |",
                          @"|      |‾‾‾‾ \('‾') /‾‾‾‾|              |",
-                         @"|      |  0   \_ニ_|/  0 |              |",
+                         @"|      |  0   \_ニ_|/  0  |              |",
                          @"|      |    `  \|/   `   |              |",
                          @"|      | ``  ‾‾/|\‾‾  `` |              |",
                          @"|      |   `  / | \   `  |              |",
@@ -62,7 +62,51 @@ namespace FaeriesAndTheWizard
                          @"|                    @                  |",
                          @"|------------------<--->----------------|"
         };
+
+        public static string[] BossFloorHard = new string[]
+        {
+                         @"|------------------<--->----------------|",
+                         @"|     THE  FEY  QUEEN  (HELL MODE)      |",
+                         @"|             |\|/|                     |",
+                         @"|      |‾‾‾‾ \('‾') /‾‾‾‾|              |",
+                         @"|      |  0   \_^_|/  0  |              |",
+                         @"|      |    `  \|/   `   |              |",
+                         @"|      | ``  ‾‾/|\‾‾  `` |              |",
+                         @"|      |   `  / | \   `  |              |",
+                         @"|      |  0  /  ^  \   0 |              |",
+                         @"|      |____/  / \  \____|              |",
+                         @"|             /   \                     |",
+                         @"|                                       |",
+                         @"|     SEEKS VENGENCE FOR HER KIND       |",
+                         @"|                                       |",
+                         @"|                                       |",
+                         @"|                                       |",
+                         @"|                    @                  |",
+                         @"|------------------<--->----------------|"
+        };
+
         //Options Arrays
+        public static string[] CreditRoom = new string[]
+        {
+                         @"|---------------------------------------|",
+                         @"|                                       |",
+                         @"|           A WINNER IS YOU!            |",
+                         @"|                                       |",
+                         @"|            CONGRATULATIONS            |",
+                         @"|                                       |",
+                         @"|       CREDITS:                        |",
+                         @"|          ALEXANDER WILKINSON          |",
+                         @"|        (THE GUY WHO DID MOST OF       |",
+                         @"|          THE PROGRAMMING)             |",
+                         @"|                                       |",
+                         @"|          BRANDON LEDGER               |",
+                         @"|         (MORALE SUPPORT AND THE       |",
+                         @"|          ONE BEHIND THE AMAZING       |",
+                         @"|           FEY QUEEN SPRITE)           |",
+                         @"|                                       |",
+                         @"|                                       |",
+                         @"|---------------------------------------|"
+        };
 
 
 
