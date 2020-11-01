@@ -306,6 +306,32 @@ namespace FaeriesAndTheWizard
         }
         static void Main(string[] args)
         {
+            foreach (var item in TextStorage.three)
+            {
+                Console.WriteLine(item);
+            }
+       
+            Thread.Sleep(1200);
+            Console.WriteLine("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+            foreach (var item in TextStorage.thing)
+            {
+                Console.WriteLine(item);
+            }
+            Thread.Sleep(1200);
+            Console.WriteLine("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+            foreach (var item in TextStorage.game)
+            {
+                Console.WriteLine(item);
+            }
+            Thread.Sleep(1200);
+            Console.WriteLine("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+            foreach (var item in TextStorage.threethinggame)
+            {
+                Console.WriteLine(item);
+            }
+            Thread.Sleep(1200);
+            Console.Write("\n\n\n\n");
+
         EndOfGame2:
             Processor.ProcessText(TextStorage.IntroText, 20);
 

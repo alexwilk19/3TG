@@ -18,7 +18,72 @@ namespace FaeriesAndTheWizard
 
         public static string FirstChoiceO12 = "You have several choices ahead of you! Touch an item to find out what it is! (To do this, input the number next to the possible item)";
 
+        public static string[] three = new string[]
+        {
+             @"                        3333                      ",
+             @"                     3333  3333                   ",
+             @"                  3333        3333                ",
+             @"                                 3333             ",
+             @"                              3333                ",
+             @"                           3333                   ",
+             @"                       33333                      ",
+             @"                           3333                   ",
+             @"                              3333                ",
+             @"                                 3333             ",
+             @"                  3333        3333                ",
+             @"                     3333  3333                   ",
+             @"                        3333                      "
+            
+        };
+        public static string[] thing = new string[]
+       {
+             @"             TTTTTTTTTTTTTTTTTTTTTTTTT            ",
+             @"             Tt         Tt          Tt            ",
+             @"                        Tt                        ",
+             @"                        Tt                        ",
+             @"                        Tt                        ",
+             @"                        Tt                        ",
+             @"                        Tt                        ",
+             @"                        Tt                        ",
+             @"                        Tt                        ",
+             @"                        Tt                        ",
+             @"                        Tt                        ",
+             @"                        Tt                        ",
+             @"                        Tt                        "
 
+       };
+        public static string[] game = new string[]
+        {
+             @"                       GGGG                       ",
+             @"                    GGGG  GGGG                    ",
+             @"                 GGGG        GGGG                 ",
+             @"               GGG              GGG               ",
+             @"             GGG              GGGGGGG             ",
+             @"            GG                                    ",
+             @"            GG                                    ",
+             @"             GGG         GGGGGGGGGGG              ",
+             @"               GGG       g      GGG               ",
+             @"                 GGGG        GGGG                 ",
+             @"                    GGGG  GGGG                    ",
+             @"                       GGGG                       ",
+             @"                                                  "
+        };
+        public static string[] threethinggame = new string[]
+        {
+             @"        3333             TTTTTTTTTTTTTTTTTTTTTTTTT               gg                 ",
+             @"     3333  3333          Tt         Tt          Tt              GGGG                ",
+             @"  3333        3333                  Tt                       GGGG  GGGG             ",
+             @"                 3333               Tt                    GGGG        GGGG          ",
+             @"              3333                  Tt                  GGG              GGG        ",
+             @"           3333                     Tt                GGG              GGGGGGG      ",
+             @"       33333                        Tt               GG                             ",
+             @"           3333                     Tt               GG                             ",
+             @"              3333                  Tt                GGG         GGGGGGGGGGG       ",
+             @"                 3333               Tt                  GGG       g      GGG        ",
+             @"  3333        3333                  Tt                    GGGG        GGGG          ",
+             @"     3333  3333                     Tt                       GGGG  GGGG             ",
+             @"        3333                        Tt                          GGGG                "
+        };
         public static string[] CauldronLevel = new string[]
         {
                          "|------------------<--->----------------|",
@@ -96,12 +161,12 @@ namespace FaeriesAndTheWizard
                          @"|                                       |",
                          @"|       CREDITS:                        |",
                          @"|          ALEXANDER WILKINSON          |",
-                         @"|        (THE GUY WHO DID MOST OF       |",
-                         @"|          THE PROGRAMMING)             |",
+                         @"|        (SYSTEMS, ROOMS AND            |",
+                         @"|          THE ITEMS)                   |",
                          @"|                                       |",
                          @"|          BRANDON LEDGER               |",
-                         @"|         (MORALE SUPPORT AND THE       |",
-                         @"|          ONE BEHIND THE AMAZING       |",
+                         @"|         (ENEMY DESIGN, COMBAT,        |",
+                         @"|          THE BEHIND THE AMAZING       |",
                          @"|           FEY QUEEN SPRITE)           |",
                          @"|                                       |",
                          @"|                                       |",
